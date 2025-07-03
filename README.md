@@ -29,6 +29,8 @@ This system enables clients to remotely invoke registered procedures on a server
 ### Packet Format
 
 All messages follow this format (with all numbers in big-endian):
+
+```
 Packet Format:
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 | |
@@ -51,6 +53,7 @@ Packet Format:
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 | ... |
 | ... |
+```
 
 - `Type` is a string: `"find"`, `"call"`, or `"resp"`
 - Each field is preceded by its byte length
@@ -86,13 +89,3 @@ Packet Format:
 - Payloads over 100,000 bytes are blocked for safety.
 
 ---
-
-## 🔌 Usage (Example)
-
-### Compilation
-
-```bash
-gcc -o server server.c rpc.c
-gcc -o client client.c rpc.c
-
-```
